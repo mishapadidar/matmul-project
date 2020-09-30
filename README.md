@@ -1,3 +1,41 @@
+# Project Strategy and Thoughts
+It is probably a good idea to read/listen to the "basic optimizations" lectures
+- What are the big computations in my code? 
+- Can I switch loop orders?
+- Keep data compact to fit in cache.
+- emphasize spatial locality
+- avoid arbitrary calls to other functions inside our functions
+- allocate memory needed for operands together then partition afterwards to gaurantee 
+  that memory doesn't overlap.
+  - allocate early and use it often. don't resize
+  - dynamic memory allocation
+  - blocking: Make one big array for matrix. store matrix blocks contiguously using "Z-patern"
+    to take advantage of row-major order.
+- Vector load/stores faster if aligned (start at memory addresses that are multiples of 64 or 256)
+- use restrict keyword so compiler can vectorize.
+- break up long depedency chains. Breaking up chains of work into smaller portions can 
+  allow the compiler to vectorize the operations 
+- Optimization flags -O0 to -O3 (no optimization to agressive optimization)
+  -O3 might break codes....
+- Intel compiler has better vectorization than gcc or CLang
+- Profile Guided Optimization
+   Compile code with optimizations. Then run in a profiler. Then compile again, provide profiler results. 
+   This helps compiler optimize branches based on observations.
+- shrink working set to fit in cache
+
+Future
+- Array of Structs and Structs of Arrays optimization
+
+
+
+Other things:
+- Cache warm starts on repeated timings
+- run block of code multiple times to time it
+- ``omp_get_wtime()``
+- profiling tools
+- 3 levels of BLAS routines
+- C is in row major order!
+
 # Matrix multiply reference code
 
 Matrix muliplication is a good first example of code optimization
