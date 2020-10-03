@@ -15,7 +15,6 @@ It is probably a good idea to read/listen to the "basic optimizations" lectures
   - [ ] use restrict keyword so compiler can vectorize.
   - [ ] Intel compiler has better vectorization than gcc or CLang
 - [ ] Optimization flags -O0 to -O3 (no optimization to agressive optimization)
-  - [ ]O3 might break codes....
 - [ ] Profile Guided Optimization
    Compile code with optimizations. Then run in a profiler. Then compile again, provide profiler results. 
    This helps compiler optimize branches based on observations.
