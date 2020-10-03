@@ -19,19 +19,19 @@ It is probably a good idea to read/listen to the "basic optimizations" lectures
 - [ ] Profile Guided Optimization
    Compile code with optimizations. Then run in a profiler. Then compile again, provide profiler results. 
    This helps compiler optimize branches based on observations.
-
-Future
 - [ ] Array of Structs and Structs of Arrays optimization
 
+## Source Code Versioning
+### dgemm_basic_v1.c:
+The original version accesses the first matrix by rows although it is stored sequentially by columns and the second
+matrix is iterated by column's, taking advantage of memory locality. To fully leverage spatial locality, we access all
+elements of all matrices in sequential order, significantly improving performance.
 
+### dgemm_basic_v2.c:
+We break the inner dot product's into vectorizable chunks of work, allowing the compiler to leverage it's vector units,
+thus speeding up performance, by a factor of ~2.
 
-Other things:
-- Cache warm starts on repeated timings
-- run block of code multiple times to time it
-- ``omp_get_wtime()``
-- profiling tools
-- 3 levels of BLAS routines
-- C is in row major order!
+<hr>
 
 # Matrix multiply reference code
 
