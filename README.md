@@ -30,6 +30,12 @@ elements of all matrices in sequential order, significantly improving performanc
 We break the inner dot product's into vectorizable chunks of work, allowing the compiler to leverage it's vector units,
 thus speeding up performance, by a factor of ~2.
 
+### dgemm_blocked_v1.c:
+Blocking matrix multiplication with spatial locality improvements. Used algorithm from dgemm_basic_v1.c to do the matrix multiplication of blocks.
+
+### dgemm_blocked_v2.c:
+Blocking matrix multiplication with vectorization. Used algorithm from dgemm_basic_v2.c to do the matrix multiplication of blocks.
+
 <hr>
 
 # Matrix multiply reference code
