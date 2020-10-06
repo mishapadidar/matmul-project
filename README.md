@@ -1,3 +1,6 @@
+# For David Bindel
+
+
 # Project Strategy and Thoughts
 It is probably a good idea to read/listen to the "basic optimizations" lectures
 - [x] Can I switch loop orders?

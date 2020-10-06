@@ -26,9 +26,9 @@ def main(runs):
     "Show plot of timing runs (non-interactive)"
     make_plot(runs)
     lgd = plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
-    filenames = [ fn[7:-4] for fn in runs ]
-    fig_filename = "timing-" + "-".join(filenames) + ".pdf"
-    plt.savefig(fig_filename, bbox_extra_artists=(lgd,), bbox_inches='tight')
+    # filenames = [ fn[7:-4] for fn in runs ]
+    # fig_filename = "timing-" + "-".join(filenames) + ".pdf"
+    plt.savefig("timing.pdf", bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 if __name__ == "__main__":
     main(sys.argv[1:])

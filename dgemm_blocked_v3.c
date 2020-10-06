@@ -1,7 +1,7 @@
-const char* dgemm_desc = "Misha & Darian's Awesome DGEMM.";
+const char* dgemm_desc = "Simple blocked dgemm.";
 
 #ifndef BLOCK_SIZE
-#define BLOCK_SIZE ((int) 128)
+#define BLOCK_SIZE ((int) 16)
 #endif
 
 /*
@@ -12,17 +12,16 @@ const char* dgemm_desc = "Misha & Darian's Awesome DGEMM.";
   lda is the leading dimension of the matrix (the M of square_dgemm).
 */
 void basic_dgemm(const int lda, const int M, const int N, const int K,
-                 const double* restrict A, const double* restrict B, double* restrict C)
+                 const double *A, const double *B, double *C)
 {
     int i, j, k;
-    for (i = 0; i < N; ++i) {
-        for (j = 0; j < K; ++j) {
-            // double cij = C[j*lda+i];
-            for (k = 0; k < M; ++k) {
-                // cij += A[k*lda+i] * B[j*lda+k];
-                C[i*lda+k] += A[j*lda+k] * B[i*lda+j];
+    for (i = 0; i < M; ++i) {
+        for (j = 0; j < N; ++j) {
+            double cij = C[j*lda+i];
+            for (k = 0; k < K; ++k) {
+                cij += A[k*lda+i] * B[j*lda+k];
             }
-            // C[j*lda+i] = cij;
+            C[j*lda+i] = cij;
         }
     }
 }
