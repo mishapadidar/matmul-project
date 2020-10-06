@@ -1,5 +1,5 @@
 # For David Bindel
-
+Our code of choice is in `dgemm_mine.c`. Run `make matmul-mine` and execute our lovely code!
 
 # Project Strategy and Thoughts
 It is probably a good idea to read/listen to the "basic optimizations" lectures
